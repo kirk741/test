@@ -12,3 +12,10 @@ use Illuminate\Support\Facades\Route;
 Route::post('/registration', [UserController::class, 'create']);
 Route::post('/authorization', [UserController::class, 'login'])->name('login');
 Route::get('/logout', [UserController::class, 'logout'])->middleware('auth:api');
+
+Route::get('/health', function () {
+    return response()->json([
+        'status' => 'ok',
+        'time' => now()
+    ]);
+});
